@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pelmeni Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<h1>Design your pelmen!</h1>
+<img th:src="@{/images/pelmen.jpg}"/>
+<form method="POST" th:object="${pelmeni}">
+    <div class="grid">
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ingredientList')}"
+              th:errors="*{ingredientList}">Error</span>
+        <div class="ingredient-group" id="meats">
+            <h3>Designate your meet:</h3>
+            <div th:each="ingredient : ${meat}">
+                <input th:field="*{ingredientList}" type="checkbox"
+                       th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span>
+                <br/>
+            </div>
+        </div>
+        <div class="ingredient-group" id="doughs">
+            <h3>Pick your dough:</h3>
+            <div th:each="ingredient : ${dough}">
+                <input th:field="*{ingredientList}" type="checkbox"
+                       th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+        <div class="ingredient-group" id="spices">
+            <h3>Choose your spices:</h3>
+            <div th:each="ingredient : ${spice}">
+                <input th:field="*{ingredientList}" type="checkbox"
+                       th:value="${ingredient.id}"/>
+                <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Name your pelmen creation:</h3>
+        <input type="text" id="name" th:field="*{name}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name must have more 5 characters</span>
+        <br/>
+        <button>Submit Your Pelmen</button>
+    </div>
+</form>
+</body>
+</html>
