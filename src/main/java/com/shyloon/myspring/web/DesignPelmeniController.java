@@ -3,10 +3,10 @@ package com.shyloon.myspring.web;
 import com.shyloon.myspring.Ingredient;
 import com.shyloon.myspring.Pelmeni;
 import com.shyloon.myspring.PelmeniOrder;
+import com.shyloon.myspring.PelmeniUDT;
 import com.shyloon.myspring.data.IngredientRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -53,8 +53,8 @@ public class DesignPelmeniController {
     }
 
     @PostMapping
-    public String processPelmeni(@Valid Pelmeni pelmeni, Errors errors,
-                            @ModelAttribute PelmeniOrder pelmeniOrder) {
+    public String processPelmeni(@Valid PelmeniUDT pelmeni, Errors errors,
+                                 @ModelAttribute PelmeniOrder pelmeniOrder) {
         if (errors.hasErrors())
             return "design";
 
