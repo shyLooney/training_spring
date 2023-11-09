@@ -1,11 +1,8 @@
-#spring.thymeleaf.cache=false
-#spring.datasource.generate-unique-name=false
-#spring.datasource.name=pelmenicloud
 spring:
-    cassandra:
-        keyspace-name: pelmenicloud
-        schema-action: recreate
-        local-datacenter: datacenter1
+  data:
+    mongodb:
+        host: 192.168.99.100
+        port: 27017
         username: sema
         password: 123456
-        contact-points: 192.168.99.100:9042
+        database: pelmenicloudb

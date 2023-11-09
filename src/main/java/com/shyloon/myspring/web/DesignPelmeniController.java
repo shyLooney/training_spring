@@ -3,7 +3,6 @@ package com.shyloon.myspring.web;
 import com.shyloon.myspring.Ingredient;
 import com.shyloon.myspring.Pelmeni;
 import com.shyloon.myspring.PelmeniOrder;
-import com.shyloon.myspring.PelmeniUDT;
 import com.shyloon.myspring.data.IngredientRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -13,8 +12,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -53,7 +50,7 @@ public class DesignPelmeniController {
     }
 
     @PostMapping
-    public String processPelmeni(@Valid PelmeniUDT pelmeni, Errors errors,
+    public String processPelmeni(@Valid Pelmeni pelmeni, Errors errors,
                                  @ModelAttribute PelmeniOrder pelmeniOrder) {
         if (errors.hasErrors())
             return "design";
